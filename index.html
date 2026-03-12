@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delight Cafe | Urban Specialty Coffee & Bakery</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/toast.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-mug-hot"></i> Delight Cafe
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="pages/menu.html" class="nav-link">Menu</a></li>
+                <li><a href="pages/order.html" class="nav-link">Order Online</a></li>
+                <li><a href="pages/reservation.html" class="nav-link">Reservation</a></li>
+                <li><a href="pages/gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="pages/about.html" class="nav-link">About</a></li>
+                <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="pages/order.html" class="icon-btn cart-btn" aria-label="View Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="pages/reservation.html" class="btn btn-primary nav-res-btn">Book Table</a>
+                <button class="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content container fade-in-up">
+                <h1>Sip the Rhythm <br> of the City.</h1>
+                <p>Specialty coffee, artisanal pastries, and light bites served in a warm, cozy atmosphere.</p>
+                <div class="hero-cta">
+                    <a href="pages/menu.html" class="btn btn-primary">View Menu</a>
+                    <a href="pages/order.html" class="btn btn-outline">Order Now</a>
+                </div>
+            </div>
+
+            <div class="hero-image-container">
+                <video class="hero-video" src="assets/hero-bg.mp4" autoplay loop muted playsinline
+                    aria-hidden="true"></video>
+            </div>
+        </section>
+
+        <!-- Today's Special -->
+        <section class="section-padding container">
+            <div class="split-grid fade-in-up">
+                <div class="split-image">
+                    <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80"
+                        alt="Latte Art">
+                </div>
+                <div class="split-content">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">Today's Special</h2>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem; color: var(--color-primary);">Filter Coffee</h3>
+                    <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Experience the authentic taste of
+                        Traditional South Indian Filter Coffee. Brewed strong and served perfectly frothy. A true
+                        delight in every sip.</p>
+                    <a href="pages/order.html" class="btn btn-primary">Order Now - ₹35</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Preview -->
+        <section class="section-padding container">
+            <div class="split-grid reverse fade-in-up">
+                <div class="split-content">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">Our Story</h2>
+                    <p style="color: var(--color-text-muted); margin-bottom: 1rem;">Born from a passion for the perfect
+                        roast, Delight Cafe is a sanctuary in the heart of the bustling city. We source our beans
+                        ethically, roast them meticulously, and brew them with love.</p>
+                    <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Whether you're here for a quick
+                        morning pick-me-up or a leisurely weekend brunch, you're family.</p>
+                    <a href="pages/about.html" class="btn btn-outline">Read More</a>
+                </div>
+                <div class="split-image">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80"
+                        alt="Cafe Interior">
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Menu -->
+        <section class="section-padding container" style="background-color: var(--color-bg); padding-top: 2rem;">
+            <div class="section-title fade-in-up">
+                <h2>Café Favorites</h2>
+                <p>Hand-crafted selections loved by our regulars</p>
+            </div>
+
+            <div class="menu-grid fade-in-up" id="featured-menu-container">
+                <div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
+                    <i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--color-primary);"></i>
+                    <p>Loading favourites...</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;" class="fade-in-up">
+                <a href="pages/menu.html" class="btn btn-primary">Explore Full Menu</a>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="section-padding container">
+            <div class="section-title fade-in-up">
+                <h2>Words from our Guests</h2>
+                <p>Don't just take our word for it.</p>
+            </div>
+
+            <div class="testimonials-grid fade-in-up">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Absolute perfection. The ambiance is beautifully designed, making it my
+                        favorite spot to work and relax. The masala chai is divine!"</p>
+                    <p class="testimonial-author">- Sarah Jenkins</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="testimonial-text">"Best filter coffee I've had in the city. You can tell they really care
+                        about their sourcing. The staff is always welcoming."</p>
+                    <p class="testimonial-author">- Michael Chen</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The vada pav here ruined all other vada pavs for me. It's
+                        that good. Highly recommend booking a table on weekends."</p>
+                    <p class="testimonial-author">- Emma Rodriguez</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter-section fade-in-up">
+            <div class="container">
+                <h2>Join the Delight Community</h2>
+                <p>Subscribe to get updates on seasonal menus, exclusive events, and brewing tips.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Instagram Gallery -->
+        <section class="section-padding container">
+            <div class="section-title fade-in-up">
+                <h2>Follow us @DelightCafe</h2>
+                <p>Share your moments using #MyDelightMoment</p>
+            </div>
+
+            <div class="insta-gallery fade-in-up">
+                <a href="#" class="insta-item">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram Post">
+                    <div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div>
+                </a>
+                <a href="#" class="insta-item">
+                    <img src="https://images.unsplash.com/photo-1445116572660-236099ae4043?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram Post">
+                    <div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div>
+                </a>
+                <a href="#" class="insta-item">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram Post">
+                    <div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div>
+                </a>
+                <a href="#" class="insta-item">
+                    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram Post">
+                    <div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div>
+                </a>
+                <a href="#" class="insta-item">
+                    <img src="https://images.unsplash.com/photo-1498604724495-9ff2d2c18d45?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram Post">
+                    <div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+                        <i class="fa-solid fa-mug-hot"></i> Delight Cafe
+                    </a>
+                    <p>Your urban retreat for the finest specialty coffee and house-made delicacies.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col links-col">
+                    <h3>Quick Links</h3>
+                    <a href="pages/menu.html">Our Menu</a>
+                    <a href="pages/reservation.html">Book a Table</a>
+                    <a href="pages/order.html">Order Online</a>
+                    <a href="pages/about.html">Our Story</a>
+                </div>
+
+                <div class="footer-col contact-col">
+                    <h3>Contact Us</h3>
+                    <p><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Chinchwad, Pune, Maharashtra,
+                        India</p>
+                    <p><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> (555) 123-4567</p>
+                    <p><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> hello@delightcafe.com</p>
+                </div>
+
+                <div class="footer-col hours-col">
+                    <h3>Opening Hours</h3>
+                    <p>Mon - Fri: 7:00 AM - 8:00 PM</p>
+                    <p>Sat - Sun: 8:00 AM - 9:00 PM</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Delight Cafe. All rights reserved. Crafted with care.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/toast.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

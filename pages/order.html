@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Delight Cafe</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/toast.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/order.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-mug-hot"></i> Delight Cafe
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="order.html" class="nav-link active">Order Online</a></li>
+                <li><a href="reservation.html" class="nav-link">Reservation</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="order.html" class="icon-btn cart-btn" aria-label="View Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="order-container fade-in-up">
+        <div class="order-header">
+            <h1>Complete Your Order</h1>
+            <p>Review your items and continue to secure checkout.</p>
+        </div>
+
+        <div class="order-grid">
+            <!-- Cart Items -->
+            <div class="cart-section" id="cart-items-container">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- Checkout Form -->
+            <div class="checkout-section">
+                <h2 class="checkout-header">Order Summary</h2>
+
+                <div class="summary-details" id="summary-details">
+                    <!-- Injected via JS -->
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal-amount">₹0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Taxes (5%)</span>
+                        <span id="tax-amount">₹0.00</span>
+                    </div>
+                    <div class="summary-row" id="discount-row" style="display: none; color: #4CAF50;">
+                        <span>Discount</span>
+                        <span id="discount-amount">-₹0.00</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="total-amount">₹0.00</span>
+                    </div>
+                </div>
+
+                <div class="promo-box">
+                    <input type="text" id="promo-code" class="promo-input" placeholder="Promo Code (TRY 'DELIGHT10')">
+                    <button class="btn btn-outline" id="apply-promo">Apply</button>
+                </div>
+                <p id="promo-message"
+                    style="font-size: 0.8rem; margin-top: -1rem; margin-bottom: 1.5rem; display: none;"></p>
+
+                <h2 class="checkout-header" style="margin-top: 2rem;">Details & Payment</h2>
+                <form class="checkout-form" id="checkout-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-input" required placeholder="John Doe">
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-input" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" class="form-input" required placeholder="(555) 123-4567">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Street Address</label>
+                        <input type="text" id="address" class="form-input" required
+                            placeholder="123 Coffee Lane, Suite 4">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City/Area</label>
+                        <input type="text" id="city" class="form-input" required placeholder="Chinchwad, Pune">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Payment Method</label>
+                        <div class="payment-options">
+                            <div class="payment-option active" data-method="card">
+                                <i class="fa-regular fa-credit-card"
+                                    style="margin-bottom: 8px; font-size: 1.2rem; display: block;"></i> Card
+                            </div>
+                            <div class="payment-option" data-method="upi">
+                                <i class="fa-solid fa-mobile-screen"
+                                    style="margin-bottom: 8px; font-size: 1.2rem; display: block;"></i> UPI/App
+                            </div>
+                            <div class="payment-option" data-method="cash">
+                                <i class="fa-solid fa-money-bill"
+                                    style="margin-bottom: 8px; font-size: 1.2rem; display: block;"></i> In-Store
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary checkout-btn" id="place-order-btn">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Tracker Modal -->
+    <div class="tracker-modal" id="tracker-modal">
+        <div class="tracker-content">
+            <span class="close-modal" id="close-tracker">&times;</span>
+            <i class="fa-solid fa-circle-check tracker-icon" id="tracker-icon"></i>
+            <h2 class="tracker-status" id="tracker-status">Order Confirmed!</h2>
+            <p style="color: var(--color-text-muted);" id="tracker-desc">Your order #<strong id="order-id"></strong> has
+                been received by our kitchen.</p>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+            <p id="tracker-eta" style="font-weight: 700;">Estimated time: 10 mins</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+
+</html>

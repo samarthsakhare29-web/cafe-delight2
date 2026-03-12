@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Delight Cafe</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/toast.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/layout.css">
+
+    <style>
+        .contact-hero {
+            background-color: var(--color-bg);
+            padding: calc(var(--nav-height) + 4rem) 0 3rem;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-hero p {
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 4rem 0 6rem;
+        }
+
+        /* Contact Details Panel */
+        .contact-info-panel {
+            background: var(--color-surface);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border);
+        }
+
+        .info-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .info-group h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--color-text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .info-group h3 i {
+            color: var(--color-primary);
+        }
+
+        .info-group p {
+            color: var(--color-text-muted);
+            line-height: 1.8;
+            margin-left: 2rem;
+        }
+
+        .social-links-lg {
+            display: flex;
+            gap: 1rem;
+            margin-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        .social-links-lg a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--color-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 1.25rem;
+            border: 1px solid var(--color-border);
+            transition: all var(--transition-fast);
+        }
+
+        .social-links-lg a:hover {
+            background: var(--color-primary);
+            color: var(--color-bg);
+            transform: translateY(-3px);
+        }
+
+        /* Form styling */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-text-main);
+        }
+
+        .form-control {
+            padding: 14px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            color: var(--color-text-main);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-control:focus {
+            border-color: var(--color-primary);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Map Embed */
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 6rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-info-panel {
+                order: 2;
+            }
+
+            .contact-form-wrapper {
+                order: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-mug-hot"></i> Delight Cafe
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="order.html" class="nav-link">Order Online</a></li>
+                <li><a href="reservation.html" class="nav-link">Reservation</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="order.html" class="icon-btn cart-btn" aria-label="View Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <header class="contact-hero">
+            <div class="container fade-in-up">
+                <h1>Get in Touch</h1>
+                <p>We'd love to hear from you. Drop us a line, or better yet, drop in for a cup.</p>
+            </div>
+        </header>
+
+        <section class="container">
+            <!-- Map Embed -->
+            <div class="map-container fade-in-up">
+                <!-- Embedding a location for Chinchwad, Pune -->
+                <iframe
+                    src="https://maps.google.com/maps?q=Chinchwad,%20Pune,%20Maharashtra,%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Info Section -->
+                <div class="contact-info-panel fade-in-up">
+                    <h2 style="margin-bottom: 2rem;">Contact Information</h2>
+
+                    <div class="info-group">
+                        <h3><i class="fa-solid fa-location-dot"></i> Visit Us</h3>
+                        <p>Chinchwad, Pune<br>Maharashtra, India</p>
+                    </div>
+
+                    <div class="info-group">
+                        <h3><i class="fa-solid fa-phone"></i> Call Us</h3>
+                        <p>Main: (555) 123-4567<br>Catering: (555) 123-4568</p>
+                    </div>
+
+                    <div class="info-group">
+                        <h3><i class="fa-solid fa-envelope"></i> Email Us</h3>
+                        <p>hello@delightcafe.com<br>events@delightcafe.com</p>
+                    </div>
+
+                    <div class="info-group">
+                        <h3><i class="fa-regular fa-clock"></i> Hours</h3>
+                        <p>Mon - Fri: 7:00 AM - 8:00 PM<br>Sat - Sun: 8:00 AM - 9:00 PM</p>
+                    </div>
+
+                    <div class="info-group">
+                        <h3><i class="fa-solid fa-hashtag"></i> Connect</h3>
+                        <div class="social-links-lg">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Section -->
+                <div class="contact-form-wrapper fade-in-up">
+                    <h2 style="margin-bottom: 2rem;">Send a Message</h2>
+                    <form class="contact-form"
+                        onsubmit="event.preventDefault(); alert('Message sent successfully! We will get back to you soon.'); this.reset();">
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="fname">First Name</label>
+                                <input type="text" id="fname" class="form-control" required placeholder="Jane">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="lname">Last Name</label>
+                                <input type="text" id="lname" class="form-control" required placeholder="Doe">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required placeholder="jane@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Subject</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="" disabled selected>Select an inquiry type</option>
+                                <option value="general">General Question</option>
+                                <option value="catering">Catering Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="career">Careers</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">Your Message</label>
+                            <textarea id="message" class="form-control" required
+                                placeholder="How can we help you?"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary"
+                            style="padding: 14px; font-size: 1.1rem; margin-top: 1rem;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <a href="../index.html" class="logo" style="margin-bottom: 1rem;">
+                        <i class="fa-solid fa-mug-hot"></i> Delight Cafe
+                    </a>
+                </div>
+                <div class="footer-col links-col">
+                    <h3>Quick Links</h3>
+                    <a href="menu.html">Our Menu</a>
+                    <a href="order.html">Order Online</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Delight Cafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Init cart count inline script
+        const cart = JSON.parse(localStorage.getItem('delight_cart')) || [];
+        const counts = document.querySelectorAll('.cart-count');
+        const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+        counts.forEach(c => c.innerText = total);
+    </script>
+</body>
+
+</html>

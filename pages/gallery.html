@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Delight Cafe</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/toast.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/layout.css">
+
+    <style>
+        .gallery-header {
+            background-color: var(--color-bg);
+            padding: calc(var(--nav-height) + 4rem) 0 3rem;
+            text-align: center;
+        }
+
+        .gallery-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-header p {
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Masonry Grid */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1.5rem;
+            padding: 2rem 0 6rem;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform var(--transition-slow);
+        }
+
+        .masonry-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .masonry-overlay i {
+            color: white;
+            font-size: 2rem;
+            transform: scale(0.5);
+            transition: transform var(--transition-fast);
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .masonry-item:hover .masonry-overlay {
+            opacity: 1;
+        }
+
+        .masonry-item:hover .masonry-overlay i {
+            transform: scale(1);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition-fast);
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color var(--transition-fast);
+        }
+
+        .lightbox-close:hover {
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 992px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-mug-hot"></i> Delight Cafe
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="order.html" class="nav-link">Order Online</a></li>
+                <li><a href="reservation.html" class="nav-link">Reservation</a></li>
+                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="order.html" class="icon-btn cart-btn" aria-label="View Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <header class="gallery-header">
+            <div class="container fade-in-up">
+                <h1>Visual Harmony</h1>
+                <p>A glimpse into the artisan craft, cozy corners, and vibrant community that make Delight Cafe special.
+                </p>
+            </div>
+        </header>
+
+        <section class="container">
+            <div class="masonry-grid fade-in-up">
+                <!-- Row 1 -->
+                <div class="masonry-item">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80"
+                        alt="Cafe Interior">
+                    <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="https://images.unsplash.com/photo-1495474472207-464a8d44ee41?auto=format&fit=crop&w=600&q=80"
+                        alt="Pour Over Coffee">
+                    <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80"
+                        alt="Pastries">
+                    <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+                <!-- Row 2 -->
+                <div class="masonry-item">
+                    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=600&q=80"
+                        alt="Barista Working">
+                    <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80"
+                        alt="Latte Art on Table">
+                    <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80"
+                        alt="Iced Coffee">
+                    <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+                <!-- Row 3 -->
+                <div class="masonry-item">
+                    ```
+                    ```
+                    <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="https://images.unsplash.com/photo-1445116572660-236099ae4043?auto=format&fit=crop&w=800&q=80"
+                        alt="Coffee Setup">
+                    <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=600&q=80"
+                        alt="Latte Art Close">
+                    <div class="masonry-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <i class="fa-solid fa-xmark lightbox-close" id="lightbox-close"></i>
+            <img src="" alt="Fullscreen Image" class="lightbox-img" id="lightbox-img">
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.masonry-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    const imgSrc = item.querySelector('img').src;
+                    // Force higher quality image for lightbox by replacing query params if we want
+                    const highResSrc = imgSrc.replace('w=600', 'w=1200').replace('w=800', 'w=1200');
+                    lightboxImg.src = highResSrc;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // prevent scrolling behind
+                });
+            });
+
+            lightboxClose.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Re-use update cart function from main logic just for the bubble status
+            const cart = JSON.parse(localStorage.getItem('delight_cart')) || [];
+            const counts = document.querySelectorAll('.cart-count');
+            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+            counts.forEach(c => c.innerText = total);
+        });
+    </script>
+</body>
+
+</html>

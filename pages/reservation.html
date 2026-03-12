@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation | Delight Cafe</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/toast.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <style>
+        .reservation-hero {
+            background-color: var(--color-bg);
+            padding: calc(var(--nav-height) + 4rem) 0 3rem;
+            text-align: center;
+        }
+
+        .reservation-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .reservation-hero p {
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .reservation-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .booking-form-wrapper {
+            background: var(--color-surface);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--color-border);
+        }
+
+        .booking-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-full {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            color: var(--color-text-main);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-control:focus {
+            border-color: var(--color-primary);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%238C5E35"><path d="M4 6l4 4 4-4z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .info-panel {
+            padding: 2rem;
+        }
+
+        .info-panel h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-muted);
+        }
+
+        .info-list i {
+            color: var(--color-primary);
+            font-size: 1.25rem;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 992px) {
+            .reservation-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .info-panel {
+                order: -1;
+                padding: 0;
+                text-align: center;
+            }
+
+            .info-list li {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .booking-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .booking-form-wrapper {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-mug-hot"></i> Delight Cafe
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="order.html" class="nav-link">Order Online</a></li>
+                <li><a href="reservation.html" class="nav-link active">Reservation</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="order.html" class="icon-btn cart-btn" aria-label="View Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <header class="reservation-hero">
+            <div class="container fade-in-up">
+                <h1>Reserve a Table</h1>
+                <p>Secure your spot and experience the cozy atmosphere of Delight Cafe. Perfect for dates, meetings, or
+                    solo reading time.</p>
+            </div>
+        </header>
+
+        <section class="container section-padding">
+            <div class="reservation-layout fade-in-up">
+
+                <div class="booking-form-wrapper">
+                    <form id="reservation-form"
+                        onsubmit="event.preventDefault(); alert('Reservation requested! Real email confirmation would be sent here.'); this.reset();">
+                        <div class="booking-row">
+                            <div>
+                                <label class="form-label" for="res-date">Date</label>
+                                <input type="date" id="res-date" class="form-control" required>
+                            </div>
+                            <div>
+                                <label class="form-label" for="res-time">Time</label>
+                                <select id="res-time" class="form-control" required>
+                                    <option value="" disabled selected>Select time</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:30">11:30 AM</option>
+                                    <option value="13:00">01:00 PM</option>
+                                    <option value="14:30">02:30 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="18:00">06:00 PM</option>
+                                    <option value="19:30">07:30 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="booking-row">
+                            <div>
+                                <label class="form-label" for="res-guests">Number of Guests</label>
+                                <select id="res-guests" class="form-control" required>
+                                    <option value="1">1 Person</option>
+                                    <option value="2" selected>2 People</option>
+                                    <option value="3">3 People</option>
+                                    <option value="4">4 People</option>
+                                    <option value="5">5 People</option>
+                                    <option value="6+">6+ People (Groups)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label" for="res-name">Full Name</label>
+                                <input type="text" id="res-name" class="form-control" required placeholder="Jane Doe">
+                            </div>
+                        </div>
+
+                        <div class="booking-row">
+                            <div>
+                                <label class="form-label" for="res-email">Email Address</label>
+                                <input type="email" id="res-email" class="form-control" required
+                                    placeholder="jane@example.com">
+                            </div>
+                            <div>
+                                <label class="form-label" for="res-phone">Phone Number</label>
+                                <input type="tel" id="res-phone" class="form-control" required
+                                    placeholder="(555) 123-4567">
+                            </div>
+                        </div>
+
+                        <div class="booking-full">
+                            <label class="form-label" for="res-notes">Special Requests (Optional)</label>
+                            <textarea id="res-notes" class="form-control" rows="3"
+                                placeholder="Window seat, anniversary celebration, allergies..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 100%; font-size: 1.1rem; padding: 14px;">Confirm Reservation</button>
+                    </form>
+                </div>
+
+                <div class="info-panel">
+                    <h3>Atmosphere & Rules</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8;">We hold tables for a grace period of 15
+                        minutes. If your party hasn't arrived or called via phone within 15 minutes of your reservation
+                        time, the table may be given to waitlist guests.</p>
+
+                    <ul class="info-list">
+                        <li>
+                            <i class="fa-solid fa-clock"></i>
+                            <div>
+                                <strong>Operating Hours</strong><br>
+                                Mon-Fri: 7AM - 8PM<br>
+                                Sat-Sun: 8AM - 9PM
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-users"></i>
+                            <div>
+                                <strong>Large Groups</strong><br>
+                                For parties of 6 or more, please contact us directly at (555) 123-4567.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-couch"></i>
+                            <div>
+                                <strong>Seating Preferences</strong><br>
+                                While we note requests for specific tables or areas, they are subject to availability
+                                upon arrival.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <a href="../index.html" class="logo" style="margin-bottom: 1rem;">
+                        <i class="fa-solid fa-mug-hot"></i> Delight Cafe
+                    </a>
+                </div>
+                <div class="footer-col links-col">
+                    <h3>Quick Links</h3>
+                    <a href="menu.html">Our Menu</a>
+                    <a href="order.html">Order Online</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Delight Cafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/reservation.js"></script>
+</body>
+
+</html>

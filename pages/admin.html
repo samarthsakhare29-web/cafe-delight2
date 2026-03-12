@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Delight Cafe</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/toast.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/order.css">
+    <style>
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: calc(100vh - 80px);
+            /* subtract header */
+            background: var(--color-bg-alt);
+        }
+
+        .admin-sidebar {
+            background: var(--color-bg);
+            border-right: 1px solid var(--color-border);
+            padding: 2rem 1rem;
+        }
+
+        .admin-nav {
+            list-style: none;
+        }
+
+        .admin-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-nav a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.75rem 1rem;
+            color: var(--color-text-muted);
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .admin-nav a:hover,
+        .admin-nav a.active {
+            background: var(--color-primary-light);
+            color: var(--color-primary);
+        }
+
+        .admin-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .admin-panel {
+            display: none;
+            background: var(--color-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        /* Order Table */
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .order-table th,
+        .order-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .order-table th {
+            background: var(--color-bg-alt);
+            font-weight: 600;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-Pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-Preparing {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .status-Completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-Cancelled {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Form styling for New Product */
+        .product-form {
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .admin-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-sidebar {
+                display: none;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-mug-hot"></i> Delight Admin
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Back to Site</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <ul class="admin-nav">
+                <li><a href="#" class="active" data-target="dashboard-panel"><i class="fa-solid fa-chart-line"></i>
+                        Dashboard</a></li>
+                <li><a href="#" data-target="orders-panel"><i class="fa-solid fa-receipt"></i> Orders</a></li>
+                <li><a href="#" data-target="products-panel"><i class="fa-solid fa-box"></i> Add Product</a></li>
+            </ul>
+        </aside>
+
+        <main class="admin-content">
+            <!-- Dashboard Overview -->
+            <div id="dashboard-panel" class="admin-panel active fade-in-up">
+                <h2>Admin Dashboard</h2>
+                <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Welcome to the Delight Cafe management
+                    portal.</p>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <div style="background: var(--color-primary-light); padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="color: var(--color-primary);">Today's Orders</h3>
+                        <p id="stat-orders" style="font-size: 2rem; font-weight: bold;">--</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Management -->
+            <div id="orders-panel" class="admin-panel fade-in-up">
+                <h2>Manage Orders</h2>
+                <div style="overflow-x: auto;">
+                    <table class="order-table" id="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" style="text-align:center;">Loading orders...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Add Product -->
+            <div id="products-panel" class="admin-panel fade-in-up">
+                <h2>Add New Product</h2>
+                <form id="add-product-form" class="product-form" style="margin-top: 1.5rem;">
+
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" id="prod-name" class="form-control" required
+                            placeholder="e.g. Vanilla Latte">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="prod-category" class="form-control" required>
+                                <option value="coffee">Coffee</option>
+                                <option value="tea">Tea</option>
+                                <option value="desserts">Desserts</option>
+                                <option value="snacks">Snacks</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Price (₹)</label>
+                            <input type="number" id="prod-price" class="form-control" required min="1"
+                                placeholder="e.g. 150">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="url" id="prod-image" class="form-control"
+                            placeholder="https://example.com/image.jpg">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="prod-desc" class="form-control" rows="3" required
+                            placeholder="Product description..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="add-prod-btn">Add Product</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>

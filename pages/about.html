@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Delight Cafe</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/toast.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <style>
+        .about-hero {
+            background-color: var(--color-bg);
+            padding: calc(var(--nav-height) + 4rem) 0 3rem;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-hero p {
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Timeline block */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 4rem auto;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--color-border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            border: 4px solid var(--color-bg);
+            box-shadow: 0 0 0 2px var(--color-border);
+        }
+
+        .timeline-year {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-main);
+        }
+
+        .timeline-content p {
+            color: var(--color-text-muted);
+        }
+
+        /* Founder Section */
+        .founder-section {
+            background: var(--color-surface);
+            padding: 5rem 0;
+            margin-top: 4rem;
+        }
+
+        .founder-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .founder-img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .founder-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .founder-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .founder-img {
+                max-width: 300px;
+                margin: 0 auto;
+                display: block;
+            }
+
+            .founder-content {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <!-- Reusing standard nav payload -->
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-mug-hot"></i> Delight Cafe
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="order.html" class="nav-link">Order Online</a></li>
+                <li><a href="reservation.html" class="nav-link">Reservation</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="order.html" class="icon-btn cart-btn" aria-label="View Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <header class="about-hero">
+            <div class="container fade-in-up">
+                <h1>Beyond the Bean</h1>
+                <p>Learn about the passion, people, and processes that structure the Delight experience.</p>
+            </div>
+        </header>
+
+        <!-- Our Story -->
+        <section class="section-padding container">
+            <div class="split-grid fade-in-up">
+                <div class="split-image">
+                    <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80"
+                        alt="Roasting Coffee">
+                </div>
+                <div class="split-content">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">The Delight Philosophy</h2>
+                    <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">We believe that coffee is more
+                        than just a beverage; it's a bridge between communities, a catalyst for conversation, and a
+                        daily ritual that deserves utmost respect.</p>
+                    <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">Sourcing our beans from fair-trade
+                        farms across Ethiopia, Colombia, and Guatemala, we ensure that every cup poured here honors the
+                        hands that cultivated it.</p>
+                    <ul class="info-list" style="margin-top: 1rem; list-style: none; padding: 0;">
+                        <li
+                            style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; color: var(--color-primary);">
+                            <i class="fa-solid fa-leaf"></i> 100% Ethically Sourced
+                        </li>
+                        <li
+                            style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; color: var(--color-primary);">
+                            <i class="fa-solid fa-fire-burner"></i> Micro-Batch Roasted
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 10px; color: var(--color-primary);">
+                            <i class="fa-solid fa-handshake-angle"></i> Community Focused
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey / Timeline -->
+        <section class="section-padding container fade-in-up">
+            <div class="section-title">
+                <h2>Our Journey</h2>
+                <p>From a small cart to your favorite neighborhood retreat.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-content">
+                        <h3>The Humble Cart</h3>
+                        <p>Delight begins as a humble three-wheeled coffee cart navigating the busy downtown streets,
+                            serving our signature roast to morning commuters.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3>The First Brick & Mortar</h3>
+                        <p>We opened our doors in Chinchwad, transitioning from wheels to walls, but keeping the
+                            intimate, friendly vibe.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>Expanding the Menu</h3>
+                        <p>Partnering with local artisanal bakers, we introduced our full menu of pastries, toasts, and
+                            brunch items to complement our coffee.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-year">Today</div>
+                    <div class="timeline-content">
+                        <h3>Delight Roasters</h3>
+                        <p>We launched our own small-batch roasting facility, allowing us complete control over the
+                            flavor profile from bean to cup.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founder Section -->
+        <section class="founder-section fade-in-up">
+            <div class="container founder-grid">
+                <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=600&q=80"
+                    alt="Head Roaster and Founder" class="founder-img">
+                <div class="founder-content">
+                    <h2 style="margin-bottom: 1rem;">Meet Elena</h2>
+                    <h4 style="color: var(--color-text-muted); margin-bottom: 2rem;">Founder & Head Roaster</h4>
+                    <p class="founder-quote">"I wanted to create a space that felt like an extension of your own living
+                        room, but with much better coffee."</p>
+                    <p style="color: var(--color-text-muted);">Elena traveled through South America studying local
+                        roasting techniques before returning home to establish Delight. Her vision was simple: eliminate
+                        the pretension often associated with specialty coffee, focusing instead on accessibility and
+                        warmth.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Reusing standard footer -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <a href="../index.html" class="logo" style="margin-bottom: 1rem;">
+                        <i class="fa-solid fa-mug-hot"></i> Delight Cafe
+                    </a>
+                </div>
+                <div class="footer-col links-col">
+                    <h3>Quick Links</h3>
+                    <a href="menu.html">Our Menu</a>
+                    <a href="order.html">Order Online</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Delight Cafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Init cart count inline script (reused)
+        const cart = JSON.parse(localStorage.getItem('delight_cart')) || [];
+        const counts = document.querySelectorAll('.cart-count');
+        const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+        counts.forEach(c => c.innerText = total);
+    </script>
+</body>
+
+</html>
